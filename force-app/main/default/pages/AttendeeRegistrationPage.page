@@ -1,0 +1,33 @@
+<apex:page standardController="Attendees__c" extensions="AttendeeRegistrationPageExtension">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="BOTTOM" >
+                <apex:commandButton action="{!s}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Attendee Details">
+                <apex:inputField value="{!attendee.Address__c}" />
+                <apex:inputField value="{!attendee.Email__c}" />
+                <apex:inputField value="{!attendee.Name}" />
+                <apex:inputField value="{!attendee.OwnerId}" />
+                <apex:inputField value="{!attendee.Phone__c}" />
+                <apex:inputField value="{!eventAttendee.Event__c}" />
+
+                <!-- Add more input fields here -->
+            </apex:pageBlockSection>
+           
+            <apex:pageBlockSection title="Event Location Details">
+                <apex:inputField value="{!loc.City__c}" />
+                <apex:inputField value="{!loc.Country__c}" />
+                <apex:inputField value="{!loc.Landmark__c}" />
+                <apex:inputField value="{!loc.Name}" />
+                <apex:inputField value="{!loc.Postal_Code__c}" />
+                <apex:inputField value="{!loc.State__c}" />
+                <apex:inputField value="{!loc.Street__c}" />
+                <apex:inputField value="{!loc.Verified__c}" />
+
+                <!-- Add more input fields here -->
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,51 @@
+<apex:page standardController="Event__c" extensions="EventRegistrationPageExtension">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="BOTTOM" >
+                <apex:commandButton action="{!s}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Event Organizer Details">
+                <apex:inputField value="{!org.Address__c}" />
+                <apex:inputField value="{!org.Alternate_Email__c}" />
+                <apex:inputField value="{!org.Alternate_Phone__c}" />
+                <apex:inputField value="{!org.Email__c}" />
+                <apex:inputField value="{!org.Name}" />
+                <apex:inputField value="{!org.OwnerId}" />
+                <apex:inputField value="{!org.Phone__c}" />
+
+                <!-- Add more input fields here -->
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Event Details"  >
+                <apex:inputField value="{!Event.Name__c}" />
+                <apex:inputField value="{!Event.End__c}" />
+                <apex:inputField value="{!Event.Frequency__c}" />
+                <apex:inputField value="{!Event.Live__c}" />
+                <apex:inputHidden value="{!Event.Location__c}" />
+                
+                <apex:inputField value="{!Event.Location_Verified__c}"/>
+                <apex:inputField value="{!Event.Max_Seats__c}" />
+                <apex:inputHidden value="{!Event.Organizer__c}" />
+                <apex:inputField value="{!Event.Recurring__c}" />
+                <apex:inputField value="{!Event.People_Attending__c}" />
+                <apex:inputField value="{!Event.Start__c}" />
+                <apex:inputField value="{!Event.Status__c}" />
+                
+
+                <!-- Add more input fields here -->
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Event Location Details">
+                <apex:inputField value="{!loc.City__c}" />
+                <apex:inputField value="{!loc.Country__c}" />
+                <apex:inputField value="{!loc.Landmark__c}" />
+                <apex:inputField value="{!loc.Name}" />
+                <apex:inputField value="{!loc.Postal_Code__c}" />
+                <apex:inputField value="{!loc.State__c}" />
+                <apex:inputField value="{!loc.Street__c}" />
+                <apex:inputField value="{!loc.Verified__c}" />
+
+                <!-- Add more input fields here -->
+            </apex:pageBlockSection>
+
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

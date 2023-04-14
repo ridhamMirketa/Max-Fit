@@ -1,0 +1,17 @@
+<apex:page standardController="Speaker__c" extensions="SpeakerRegistrationPageExtension">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="BOTTOM" >
+                <apex:commandButton action="{!s}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Event Speaker Details">
+                <apex:inputField value="{!speaker.Name}" />
+                <apex:inputField value="{!speaker.Email__c}" />
+                <apex:inputField value="{!speaker.OwnerId}" />
+                <apex:inputField value="{!speaker.Phone__c}" />
+                <apex:inputField value="{!eventSpeaker.Event__c}" />
+                <!-- Add more input fields here -->
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

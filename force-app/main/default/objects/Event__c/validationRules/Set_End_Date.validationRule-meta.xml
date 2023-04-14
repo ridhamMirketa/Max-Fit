@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Set_End_Date</fullName>
+    <active>true</active>
+    <description>End Date/Time must be at-least 1 day ahead of Start Date/Time (If there is a value in End Date/Time field)</description>
+    <errorConditionFormula>NOT(ISBLANK( End__c ))&amp;&amp; End__c&lt;=Start__c</errorConditionFormula>
+    <errorDisplayField>End__c</errorDisplayField>
+    <errorMessage>End Date/Time must be at-least 1 day ahead of Start Date/Time</errorMessage>
+</ValidationRule>

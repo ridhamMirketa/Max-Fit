@@ -1,0 +1,54 @@
+<apex:page Controller="DisplayEventSpeakerController">
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="BOTTOM" >
+                <apex:commandButton action="{!URLFOR($Page.EventRegistrationPage,null,[id=EventDetails.id])}" value="Register as Speaker" />
+
+                <apex:commandButton action="{!URLFOR($Page.AttendeeRegistrationPage,null,[id=EventDetails.id])}" value="Register as Attendee" />
+            </apex:pageBlockButtons>
+            <div>
+             <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;margin-top:20px" >
+            <h1 style="font-size:20px; ">{!EventDetails.Name__c}</h1>
+            <div style="margin-top:20px">
+            <h1 style="font-size:20px">Organized By: {!EventDetails.Organizer__r.Name}</h1>
+            </div>
+            
+            </div>
+            <div style="display:flex;flex-direction:column;margin-top:20px" >
+            <p style="font-size:15px">Location: {!EventDetails.location__r.Name}</p>
+            <p style="font-size:15px">Date and Time: {!EventDetails.Start__c}</p>
+            </div>
+            
+            <div style="border:2px solid black; padding:5px;margin-top:10px">
+            Speakers
+            </div>
+            <div style="display:flex;padding:10px;justify-content:space-evenly" >
+            
+            
+            <apex:repeat value="{!lSpeakerDetails}" var="l">
+            <div style="border:2px solid black; padding:5px;margin-top:10px">
+
+            <p>{!l.Speaker__r.Name}</p>
+            <p>Profile URL: {!l.Speaker__r.Profile_URL__c}</p>
+            <div>
+            <div style="display:flex;flex-direction:column;align-items:center;margin-top:20px">
+            <h2>About Me</h2>
+            <apex:outputText escape="false" >{!l.Speaker__r.About_Me__c} </apex:outputText>
+            </div>
+            
+            
+            </div>
+            </div>
+            </apex:repeat>
+            
+            
+            </div>
+            
+            </div>
+            
+           
+                
+        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
