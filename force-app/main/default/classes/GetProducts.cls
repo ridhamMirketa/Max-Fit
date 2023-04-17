@@ -1,13 +1,19 @@
 public with sharing class GetProducts {
     public static HttpResponse GetAllProducts() {
         //Making a custom pricebook method
-        HttpRequest request = new HttpRequest();
-        request.setEndpoint('https://fakestoreapi.com/products');
-        request.setMethod('GET');
+        try{
+            HttpRequest request = new HttpRequest();
+            request.setEndpoint('https://fakestoreapi.com/products');
+            request.setMethod('GET');
 
-        Http http = new Http();
-        HttpResponse response = http.send(request);
-        return response;
+            Http http = new Http();
+            HttpResponse response = http.send(request);
+            return response;
+        }catch(Exception e){
+            System.debug(e);
+            return null;
+        }
+        
     }
     public static void insertProduct(){
         Id standardPriceBookId;
@@ -32,18 +38,15 @@ public with sharing class GetProducts {
             Map<String,Decimal> priceIdMap=new Map<String,Decimal>();
             for(object product:lProducts){
                 Map<String, Object> jsonObj = (Map<String, Object>)product;
-                Integer id = (Integer)jsonObj.get('id');
-                String id1 = String.valueOf(id);
-                String title = (String)jsonObj.get('title');
-                String description = (String)jsonObj.get('description');
-                Decimal price = (Decimal)jsonObj.get('price');
+                ProductModelClass obj=new ProductModelClass(jsonObj);
+                String id = obj.getId();
+                String title = obj.gettitle();
+                String description = obj.getdescription();
+                Decimal price = obj.getPrice();
                 
-                priceIdMap.put(id1, price);
+                priceIdMap.put(id, price);
                 
-                Product2 newProduct=new Product2(ProductCode=id1,Name=title,Description=description);
-                // newProduct.ProductCode=id1;
-                // newProduct.Name=title;
-                // newProduct.Description=description;
+                Product2 newProduct=new Product2(ProductCode=id,Name=title,Description=description);
                 lProductObj.add(newProduct);
                
             }
